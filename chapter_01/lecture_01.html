@@ -1,0 +1,1351 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headerlink {
+  font: normal 400 16px fontawesome-mini;
+  vertical-align: middle;
+  margin-left: -16px;
+  float: left;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0;
+  color: #333;
+}
+
+.markdown-body .headerlink:focus {
+  outline: none;
+}
+
+.markdown-body h1 .headerlink {
+  margin-top: 0.8rem;
+}
+
+.markdown-body h2 .headerlink,
+.markdown-body h3 .headerlink {
+  margin-top: 0.6rem;
+}
+
+.markdown-body h4 .headerlink {
+  margin-top: 0.2rem;
+}
+
+.markdown-body h5 .headerlink,
+.markdown-body h6 .headerlink {
+  margin-top: 0;
+}
+
+.markdown-body .headerlink:hover,
+.markdown-body h1:hover .headerlink,
+.markdown-body h2:hover .headerlink,
+.markdown-body h3:hover .headerlink,
+.markdown-body h4:hover .headerlink,
+.markdown-body h5:hover .headerlink,
+.markdown-body h6:hover .headerlink {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* MultiMarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\e157';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*GitHub*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>lecture_01</title></head><body><article class="markdown-body"><h1 id="lecture-01-getting-started">Lecture 01 &ndash; Getting Started<a class="headerlink" href="#lecture-01-getting-started" title="Permanent link"></a></h1>
+<h2 id="01-introduction">0.1 Introduction<a class="headerlink" href="#01-introduction" title="Permanent link"></a></h2>
+<p>Hello everyone! Thanks for joining me on this tour of the C++ Primer.</p>
+<h3 id="011-why-c">0.1.1 Why C++<a class="headerlink" href="#011-why-c" title="Permanent link"></a></h3>
+<p>What is C++ useful for? I don&rsquo;t really know the answer myself&hellip; I guess it depends what you want to do with it!</p>
+<p>For me, it&rsquo;d probably be good if I wanted to use it for using ROS (Robot Operating System) or for y&rsquo;know trying to get a job. But as I&rsquo;ve learned more and more it&rsquo;s honestly just kind of fun to know on it&rsquo;s own, and I&rsquo;m kind of interested in trying to program a simple video game with it.</p>
+<p>What about you? Do you have any particular goal you&rsquo;re working towards by learning C++? Or do you think it&rsquo;d just be a good thing to know?</p>
+<p>I searched the internet for &ldquo;what is C++ used for&rdquo; and found this site: <a href="https://www.educba.com/uses-of-c-plus-plus/">https://www.educba.com/uses-of-c-plus-plus/</a> &hellip; seems like a lot of stuff was created (at least partially) using C++, such as:</p>
+<ul>
+<li>Applications (i.e. Adobe Illustrator)</li>
+<li>Games (modern game engines like Unity 3D use it)</li>
+<li>Web Browsers (i.e. Google Chrome)</li>
+<li>Operating Systems (i.e. Windows)</li>
+</ul>
+<p>so basically anything. We can also look at a pro/con list:</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Popularity (lots of help online, and many libraries available)</li>
+<li>Portability (can run on basically any platform)</li>
+<li>Speed (code is compiled beforehand, so it runs fast)</li>
+<li>Scalability (low-level control of resources allows for potentially large, complicated programs)</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>Complicated (complex syntax can make it difficult to learn, pointers can be tricky)</li>
+<li>Low-level management (also a pro&hellip; programmer responsible for memory allocation, not accessing invalid elements in for loops, etc.)</li>
+</ul>
+<h3 id="012-what-is-c">0.1.2 What is C++<a class="headerlink" href="#012-what-is-c" title="Permanent link"></a></h3>
+<p>According to Wikipedia:</p>
+<blockquote>
+<p>C++ (/ˌsiːˌplʌsˈplʌs/) is a high-level, general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or &ldquo;C with Classes&rdquo;. The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation. It is almost always implemented as a compiled language, and many vendors provide C++ compilers, including the Free Software Foundation, LLVM, Microsoft, Intel, Oracle, and IBM, so it is available on many platforms.</p>
+</blockquote>
+<p>So there you have it! That Bjarne Stroustrup guy comes up pretty often, and is still active in writing books about the language.</p>
+<p>Let&rsquo;s go into a little more depth on each point. I don&rsquo;t know much about C, but &ldquo;classes&rdquo; will let us define our own objects with the ability to store data and write our own functions to manipulate that object. This is basically what &ldquo;object-oriented programming&rdquo; means. </p>
+<p>C++ is &ldquo;generic&rdquo;, meaning algorithms are implemented in such a way that they don&rsquo;t depend on the type of object we&rsquo;re operating on. For example, we might iterate through a list of numbers {1, 2, 3, 4, 5} or strings of characters {&ldquo;no&rdquo;, &ldquo;this&rdquo;, &ldquo;is&rdquo;, &ldquo;patrick&rdquo;} in the same way.</p>
+<p>C++ has &ldquo;functional features&rdquo;, which I think just mean we can write and call functions to perform operations on our objects.</p>
+<p>Finally, C++ has facilities for &ldquo;low-level memory manipulation&rdquo;, meaning we&rsquo;ll be responsible for telling the compiler what each object is, and how much memory to set aside for it.</p>
+<p>C++ is a &ldquo;compiled language&rdquo;, meaning the &ldquo;source code&rdquo; we write is translated into &ldquo;machine code&rdquo; that a computer can understand before we can run our programs.</p>
+<p>C++ got its name from starting out as sort of an iteration of the C language. The postfix (++) operator is used in the language to increment an object, hence C++ is sort of the next step after C.</p>
+<p>Interestingly, C++ is standardized by the ISO (International Organization for Standardization), and every three years they come out with a new standard of the language, with &ldquo;big&rdquo; updates every 6 years. The current standard is C++17, but C++20 is due out later this year!</p>
+<h3 id="013-course-structure">0.1.3 Course Structure<a class="headerlink" href="#013-course-structure" title="Permanent link"></a></h3>
+<p>We&rsquo;ll be using the C++ Primer 5th Edition as the backbone of this course. It&rsquo;s a good book! It can get pretty deep in technical details, but the devil (and many hard-to-catch bugs) is in the details, so I like that. I would recommend getting a physical copy of the book (if that&rsquo;s your thing), because you&rsquo;ll spend a lot of time reading it and flipping back and forth between writing code and looking at the book.</p>
+<p>The C++ Primer 5th Edition is based on the C++11 standard. Though this standard is 9 years old now, it still covers the essentials you need to know about C++!</p>
+<p>We&rsquo;ll be starting from scratch, so no programming experience is required or expected! All are welcome to join, so if you know of anyone else that wants to join us, feel free to invite them.</p>
+<p>Right now, I&rsquo;m expecting the course to last 12 weeks (Tuesday May 5th - Friday July 10th), but we can see where we get and reevaluate in a couple months.</p>
+<p>We&rsquo;ll have two classes a week, with a Lecture at 4:00 PM on Tuesdays and and a Workshop/Discussion section at 4:00 PM on Fridays. The Lecture will mostly be me going through notes and presenting some examples live, while for the Workshop/Discussions we will choose some specific exercises to go over and talk about any topics that are confusing.</p>
+<p>Ideally, we can get through a chapter a week, but some of the chapters are a lot longer and will require more time&hellip; at a minimum, I think if we get through Chapter 7 (which completes part 1 of the book) that will be a good introduction!</p>
+<p>Also, I would recommend trying to do all the exercises in each chapter that we cover. Without that practice, the syntax (and common places to look for bugs) won&rsquo;t really stick! I&rsquo;ll post solutions to the exercises each week before the Friday Workshop. Keep in mind that these will be my own attempt at the answers (with some help from the Internet) so there could be errors! Bonus points for finding them.</p>
+<h3 id="014-disclaimer">0.1.4 Disclaimer<a class="headerlink" href="#014-disclaimer" title="Permanent link"></a></h3>
+<p>My experience with C++ is reading through Chapter 10 of this book&hellip; so we will be learning together! Also, I haven&rsquo;t really taught anything, let alone virtually through Zoom, so any feedback you have for me during this would be very helpful. For example, if my constant scrolling is making you motion sick, or I&rsquo;m tabbing back and forth too much, let me know!</p>
+<p>I think that&rsquo;s it for preliminaries&hellip; I&rsquo;ll take any questions before we dive in!</p>
+<p>Oh right. I set up a course Github here: (<strong>add a link!</strong>) where these lectures and exercise solutions will be posted! Feel free to slack/email me with any questions that come up while you&rsquo;re working through the problems!</p>
+<h2 id="10-chapter-1-getting-started">1.0 Chapter 1 &ndash; Getting Started<a class="headerlink" href="#10-chapter-1-getting-started" title="Permanent link"></a></h2>
+<p>The way to learn a new language is to write programs!</p>
+<p>We&rsquo;ll need a few basic C++ features introduced in this chapter, and we&rsquo;ll also talk about compiling and running a program.</p>
+<ul>
+<li>Define variables</li>
+<li>Do input/output</li>
+<li>Use a data structure to hold data</li>
+<li>Test whether two books are the same</li>
+<li>Use a loop to process every record</li>
+</ul>
+<h3 id="11-writing-a-simple-c-program">1.1 Writing a Simple C++ Program<a class="headerlink" href="#11-writing-a-simple-c-program" title="Permanent link"></a></h3>
+<p>Every C++ program contains one or more functions, one of which <strong>must</strong> be named <code>main()</code>. The OS runs the program by calling <code>main</code>.</p>
+<p>For example,
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></p>
+<p>Each function has four elements: a <em>return type</em> (<code>int</code>), a <em>function name</em> (<code>main</code>), a (possibly empty) <em>parameter list</em> enclosed by parentheses, and a <em>function body</em>. The <code>main</code> function is required to have a return type of <code>int</code>, which is a type that represents integers. Normally, a return value of <code>0</code> from <code>main</code> indicates success.</p>
+<p>Now that we&rsquo;ve written our simple program and saved it, we need to compile it and run it! (Cue switching screens.)</p>
+<h3 id="12-a-first-look-at-inputoutput">1.2 A First Look at Input/Output<a class="headerlink" href="#12-a-first-look-at-inputoutput" title="Permanent link"></a></h3>
+<p>C++ itself doesn&rsquo;t define any statements for input or output (IO). Instead, C++ includes a <strong>standard library</strong> that provides IO.</p>
+<p>Most of the examples in this book use the <code>iostream</code> library, so we&rsquo;ll be using it all the time! In particular, two types called an <code>istream</code> and an <code>ostream</code>, for input and output, will be useful throughout.</p>
+<p>In particular, we use the <em>standard input</em>, an object of type <code>istream</code> named <strong>cin</strong>, to read data from the command line.
+We use the <em>standard output</em>, an <code>ostream</code> object, to write to the command line.</p>
+<p>Let&rsquo;s look at an example of how to use these:
+<div class="codehilite"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Enter two numbers:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">v1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">v1</span> <span class="o">&gt;&gt;</span> <span class="n">v2</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;The sum of &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v1</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; and &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">v2</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; is &quot;</span> <span class="o">&lt;&lt;</span>
+        <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+Let&rsquo;s walk through each part of the program.</p>
+<p><code>#include &lt;iostream&gt;</code> tells the compiler we want to use the <code>iostream</code> library. The name inside the angle brackets refers to a <strong>header</strong>. If you want to use a library facility, you must include its header. Typically, the <code>#include</code> must appear outside any functions, and usually, we put all of them at the beginning of the source file.</p>
+<p>The first statement of the function body, <code>std::cout &lt;&lt; "Enter two numbers:" &lt;&lt; std::endl;</code>, executes an <strong>expression</strong>. An expression yields a result and is composed of one or more &ldquo;operands&rdquo; and (usually) an opeartor. Here, we use the <strong>output operator (<code>&lt;&lt;</code>)</strong> to print a message to cout.</p>
+<p>The left hand operand to <code>&lt;&lt;</code> must be an <code>ostream</code> object, and the right hand operand is a value to print. The result of the operator is its left hand operand, which allows us to chain outputs together!</p>
+<p><code>"Enter two numbers"</code> is a <strong>string literal</strong>, a sequence of characters enclosed in double quotation marks.</p>
+<p><code>std::endl</code> is called a <strong>manipulator</strong>, which ends the current line and &ldquo;flushes&rdquo; the buffer associated with the device.</p>
+<p>The prefix <code>std::</code> indicates that certain names like <code>cout</code> and <code>endl</code> are defined inside the <strong>namespace</strong> named <strong>std</strong>. Namespaces will allow us to avoid inadvertent collisions between names.</p>
+<p>The use the scope operator <code>::</code> to say we want to use a certain name within a namespace.</p>
+<p>We defined two <strong>variables</strong> named v1 and v2 <code>int v1 = 0, v2 = 0;</code>. We define these variables as type <code>int</code>, and <strong>initialize</strong> them to 0.</p>
+<p>Reading from the standard input is analagous to writing to it. We use the <strong>input operator (<code>&gt;&gt;</code>)</strong> to read the input and store it in our variables: <code>std::cin &gt;&gt; v1 &gt;&gt; v2;</code></p>
+<p>Finally, the last line uses the output operator to print the output. Note that the library defines versions of <code>&lt;&lt;</code> to handle different operands like string literals and <code>int</code> values.</p>
+<h3 id="13-a-word-about-comments">1.3 A Word about Comments<a class="headerlink" href="#13-a-word-about-comments" title="Permanent link"></a></h3>
+<p>Everybody loves comments!</p>
+<p>The compiler ignores comments, so go nuts.</p>
+<p>There&rsquo;s two kinds of comments in C++: single-line and paired.</p>
+<div class="codehilite"><pre><span class="c1">// this is a single line comment</span>
+
+<span class="cm">/*</span>
+<span class="cm">this is a paired comment.</span>
+<span class="cm">anything between the start and end is commented.</span>
+<span class="cm">* It could be a good idea to start each line with an</span>
+<span class="cm">* asterisk, but that&#39;s a stylistic choice.</span>
+<span class="cm">Comment pairs do not nest, so /*    */</span> <span class="k">this</span> <span class="n">is</span> <span class="n">source</span> <span class="n">code</span><span class="p">.</span> <span class="err">*/</span>
+<span class="err">*/</span>
+</pre></div>
+
+<h3 id="14-flow-of-control">1.4 Flow of Control<a class="headerlink" href="#14-flow-of-control" title="Permanent link"></a></h3>
+<p>Statements normally execute sequentially. <strong>Flow-of-control</strong> statements allow for more complicated executing paths.</p>
+<h4 id="the-while-statement">The <code>while</code> Statement<a class="headerlink" href="#the-while-statement" title="Permanent link"></a></h4>
+<p>A <strong><code>while</code> statement</strong> repeatedly executes a section of code so long as a given condition is true.
+<div class="codehilite"><pre><span class="cp">#include &lt;iostream&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">val</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">val</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">val</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Sum of 1 to 10 inclusive is &quot;</span>
+        <span class="o">&lt;&lt;</span> <span class="n">sum</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></p>
+<p>Let&rsquo;s go over the new parts of this program.</p>
+<p>A <code>while</code> has the form
+<div class="codehilite"><pre>while (condition)
+    statement
+</pre></div></p>
+<p>A <strong>condition</strong> is an expression that yields a result that is either true or false.
+So long as <code>condition</code> is true, statement is executed.
+After executing <code>statement</code>, <code>condition</code> is tested again.</p>
+<p>In this program, we use the condition <code>val &lt;= 10</code> to compare the current value of <code>val</code> and <code>10</code>.
+If <code>val &lt;= 10</code>, we execute the following <code>{ sum += val; ++val; }</code>.</p>
+<p>This is a <strong>block</strong> with two statements.
+A block is a sequence of statements enclosed by curly braces <code>{}</code>.
+We use the <strong>compound assignment operator</strong> <code>+=</code>, which is equivalent to writing <code>sum = sum + val;</code>.
+We also use the <strong>prefix increment operator</strong> <code>++</code>, which adds to its operand.
+So, <code>++val</code> is equivalent to <code>val = val + 1</code>.</p>
+<p>When the condition becomes false, we exit the <code>while</code> loop and print the sum.
+Note that if the condition is true indefinitely, the <code>while</code> loop will run forever!</p>
+<h4 id="the-for-statement">The <code>for</code> Statement<a class="headerlink" href="#the-for-statement" title="Permanent link"></a></h4>
+<p>In its simplest form, a <code>for</code> statement uses a variable in a condition, and increments that variable after each iteration.</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">val</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">val</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Sum of 1 to 10 inclusive is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sum</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Here, we define <code>val</code> as part of the <code>for</code> statement: <code>for (int val = 1; val &lt;= 10; ++val)</code>.
+This is called the header of the for statement, which is composed of three parts: an <em>init-statement</em>, a <em>condition</em>, and an <em>expression</em>.</p>
+<p>The init-statment <code>int val = 1</code> defines an <code>int</code> object with value 1.
+Note that <code>val</code> only exists <em>within</em> the for loop.</p>
+<p>The condition <code>val &lt;= 10</code> is checked each time through the for loop.</p>
+<p>The expression <code>++val</code> is executed <em>after</em> the <code>for</code> body.
+After executing the expression, the condition is checked.</p>
+<h4 id="reading-an-unknown-number-of-inputs">Reading an Unknown Number of Inputs<a class="headerlink" href="#reading-an-unknown-number-of-inputs" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">value</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Sum is: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sum</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Evaluating the <code>while</code> condition executes the expression <code>std::cin &gt;&gt; value</code>.
+That expression reads the next number from <code>cin</code>, and stores the nubmer in <code>value</code>.
+It returns its left operand, so the condition tests <code>std::cin</code>.
+This will evaluate to <code>true</code> so long as the stream is &ldquo;valid&rdquo;&hellip; if the stream hasn&rsquo;t encountered an error, it succeeds.
+For example, if the stream reads a value that&rsquo;s not an <code>int</code>, or hits an <strong>end-of-file</strong>, it will become invalid.
+On my Mac, I can enter an end-of-file using <code>ctrl + d</code></p>
+<h4 id="the-if-statement">The <code>if</code> Statement<a class="headerlink" href="#the-if-statement" title="Permanent link"></a></h4>
+<p>C++ provides an <strong><code>if</code> statement</strong> that supports conditional execution.
+<div class="codehilite"><pre><span class="cp">#include &lt;iostream&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// currVal is the number we&#39;re counting; we&#39;ll read new values into val</span>
+    <span class="kt">int</span> <span class="n">currVal</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="c1">// read first number and ensure that we have data to process</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">currVal</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">// store the count for the current alue we&#39;re processing</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// read the remaining numbers</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">val</span> <span class="o">==</span> <span class="n">currVal</span><span class="p">)</span>         <span class="c1">// if the values are the same</span>
+                <span class="o">++</span><span class="n">cnt</span><span class="p">;</span>                  <span class="c1">// add 1 to cnt</span>
+            <span class="k">else</span> <span class="p">{</span>      <span class="c1">// otherwise, print the count for the previous value</span>
+                <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">currVal</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; occurs &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">cnt</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; times &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                <span class="n">currVal</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>          <span class="c1">// remember the new value</span>
+                <span class="n">cnt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>                <span class="c1">// reset the counter</span>
+            <span class="p">}</span>
+        <span class="p">}</span>   <span class="c1">// while loop ends here</span>
+        <span class="c1">// remember to print the count for the last value in the file</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">currVal</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; occurs &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">cnt</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; times &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>   <span class="c1">// outermost if statement ends here</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></p>
+<p>The first <code>if</code>, <code>if (std::cin &gt;&gt; currVal)</code> ensures that the input is nonempty.
+The <code>if</code> evaluates a condition.
+If that condition is true, we execute the block that follows the condition.</p>
+<p>The body of the <code>while</code> loop contains the second <code>if</code> condition: <code>if (val == currVal)</code>.
+The condition uses the <strong>equality operator</strong> <code>==</code> to check if <code>val</code> is equal to <code>currVal</code>.
+If the condition is false, we execute the statement following the <code>else</code>.</p>
+<h3 id="15-introducing-classes">1.5 Introducing Classes<a class="headerlink" href="#15-introducing-classes" title="Permanent link"></a></h3>
+<p>Say we want to write a program to solve a simple bookstore problem that stores transactions, which will contain 3 data elements:</p>
+<p><code>0-201-70353-X 4 24.99</code></p>
+<p>The first element is an ISBN (aka book number), the second is the number of copies sold, and the third is the price of each copy.</p>
+<p>To do so, we define a <strong>data structure</strong> to represent our transactions.
+In C++, we define our own data structures by defining a <strong>class</strong>.
+A class defines a type, and a collection of operations related to that type.</p>
+<p>Here, we won&rsquo;t define classes, but we will learn a little bit about using them.
+To use a class, we need to know</p>
+<ul>
+<li>What is the class name?</li>
+<li>Where is it defined?</li>
+<li>What operations does it suport?</li>
+</ul>
+<p>For now, we&rsquo;ll assume the class is named <code>Sales_item</code> and it is defined in a header called <code>Sales_item.h</code>. </p>
+<h4 id="the-sales_item-class">The <code>Sales_item</code> Class<a class="headerlink" href="#the-sales_item-class" title="Permanent link"></a></h4>
+<p>As with built-in types, we can define a variable of a class type. For example, 
+<div class="codehilite"><pre><span class="n">Sales_item</span> <span class="n">item</span><span class="p">;</span>
+</pre></div>
+creates an object of type <code>Sales_item</code> or &ldquo;a <code>Sales_item</code> object&rdquo;.
+We won&rsquo;t get into the details of the <code>Sales_item</code> class, but we know that we can</p>
+<ul>
+<li>call a function called <code>isbn</code> to fetch the ISBN from a <code>Sales_item</code> object.</li>
+<li>use <code>&gt;&gt;</code> and <code>&lt;&lt;</code> to read and write <code>Sales_item</code> objects</li>
+<li>use <code>=</code> to assign one Sales_item object to another</li>
+<li>use <code>+</code> and <code>+=</code> to add two Sales_item objects&hellip; here we require both objects have the same ISBN, and add their units sold and price together.</li>
+</ul>
+<p>Now, we can write programs that use the <code>Sales_item</code> class:
+<div class="codehilite"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &quot;Sales_item.h&quot;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Sales_item</span> <span class="n">book</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">book</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">book</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></p>
+<p>(Cue screen change!)
+Note that we include the <code>"Sales_item.h"</code> header where the Sales_item class is defined.</p>
+<p>A more interesting example adds two <code>Sales_item</code> objects:
+<div class="codehilite"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &quot;Sales_item.h&quot;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Sales_item</span> <span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">item1</span> <span class="o">&gt;&gt;</span> <span class="n">item2</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">item1</span> <span class="o">+</span> <span class="n">item2</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></p>
+<p>The interesting thing about this program is that the concept of &ldquo;sum&rdquo; is defined by the <code>Sales_item</code> class.</p>
+<h4 id="a-first-look-at-member-functions">A First Look at Member Functions<a class="headerlink" href="#a-first-look-at-member-functions" title="Permanent link"></a></h4>
+<p>The previous program should check whether the objects have the same ISBN before adding them&hellip; we&rsquo;ll update this:
+<div class="codehilite"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &quot;Sales_item.h&quot;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Sales_item</span> <span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">item1</span> <span class="o">&gt;&gt;</span> <span class="n">item2</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">item1</span><span class="p">.</span><span class="n">isbn</span><span class="p">()</span> <span class="o">==</span> <span class="n">item2</span><span class="p">.</span><span class="n">isbn</span><span class="p">()){</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">item1</span> <span class="o">+</span> <span class="n">item2</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Data must refer to the same ISBN&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+We&rsquo;ll only add <code>item1</code> and <code>item2</code> together if the condition inside <code>if (item1.isbn() == item2.isbn())</code> is true.
+Here, we&rsquo;re calling a <strong>member function</strong> named <code>isbn</code>, which returns the ISBN of the object.
+A member function is defined as part of a class, and are sometimes referred to as <strong>methods</strong>.
+In <code>item1.isbn()</code>, we use the <strong>dot operator (<code>.</code>)</strong> to say that we want to call the <code>isbn</code> method of <code>item1</code>.
+Additionally, we use the <strong>call operator ( <code>()</code> )</strong>
+The parentheses are empty because we are not passing any <strong>arguments</strong>, which we will cover later.</p>
+<h3 id="16-the">1.6 The<a class="headerlink" href="#16-the" title="Permanent link"></a></h3></article></body></html>

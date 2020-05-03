@@ -1,0 +1,7 @@
+the_catcher_in_the_rye 10 9.99
+the_catcher_in_the_rye 5 4.99
+for_whom_the_bell_tolls 13 4.67
+for_whom_the_bell_tolls 1 3.56
+for_whom_the_bell_tolls 8 9.76
+the_hobbit 7 43.25
+the_hobbit 8 27.65
