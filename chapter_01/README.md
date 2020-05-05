@@ -154,10 +154,12 @@ There's two kinds of comments in C++: single-line and paired.
 
 /*
 this is a paired comment.
+*/
+
+/*
 anything between the start and end is commented.
-* It could be a good idea to start each line with an
-* asterisk, but that's a stylistic choice.
-Comment pairs do not nest, so /*    */ this is source code. */
+Comment pairs do not nest, so
+/*    */ this is source code. */
 */
 ```
 
