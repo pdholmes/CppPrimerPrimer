@@ -446,3 +446,417 @@ int *&r = p; // r is a reference to the pointer p
 r = &i; // r refers to a pointer; assigning &i to r makes p point to i
 *r = 0; // dereferencing r yields i, the object to which p points; changes i to 0
 ```
+
+## 2.4 `const` Qualifier
+If we know a variable's value won't change, and we don't want to be able to accidentally change it, we can specify it at `const`.
+
+```C++
+const int bufSize = 512;
+
+bufSize = 1024; // error: bufSize is const, can't assign to it
+
+const int i = get_size();
+const int j = 42;
+const int k; // error: k must be initialized
+```
+
+Because we can't change the value of a const variable, they must be initialized.
+
+#### Initialization and Const
+We can use a `const` type in the exact same way as a `nonconst` type, *except* that we can't use any operations that change the variable's value.
+
+For example, we can use const variables to initialize nonconst variables, since that doesn't change the value of the const variable.
+```C++
+int i = 42;
+const int ci = i;
+int j = ci;
+```
+
+#### By Default, `const` Objects are Local to a File
+`const` objects are basically replaced by their initializers when compiled. Therefore, to use a `const` variable across multiple source files, each source file must have access to its initializer. To share a const object among multiple files, you must define the variable as `extern`.
+
+```C++
+// file_1.cc defines and initializes a `const` that is accessible to other files
+extern const int bufSize = fcn();
+// file_1.h
+extern const int; // same bufSize as defined in file_1.cc
+```
+
+### 2.4.1 References to `const`
+As with any other object, we can bind references to `const` objects. However, that reference can't be used to change the object to which the reference is bound.
+
+```C++
+const int ci = 1024;
+const int &r1 = ci; // ok: both reference and underlying object are const
+r1 = 42; // error: r1 is a reference to const, can't assign new value to object
+int &r2 = ci; // error: nonconst reference to a const object
+```
+
+*Note:* in a sense all references themselves are const, because there's no way to change what object they refer to once initialized. However, when we say "const references", we really mean "references to const", i.e. the reference is bound to a const object.
+
+#### Initialization and References to `const`
+With references to `const`, we have two exceptions to the rule that the type of a reference must match the type of the object to which it refers.
+
+First, we can define references to `const` using initializers that can be converted:
+
+```C++
+int i = 42;
+const int &r1 = i; // we can bind a const int& to a plain int object
+const int &r2 = 42; // ok: r2 is a reference to const.
+const int &r3 = r1 * 2; // ok: r3 is a reference to const.
+int &r4 = r1 * 2; // error: r4 is a plain, nonconst reference.
+```
+
+Let's consider what's happening with the following example.
+Writing
+```C++
+double dval = 3.14;
+const int &ri = dval;
+```
+
+If ri were not a reference to `const`, the statement would be illegal, since a reference to an int can't be bound a double.
+However, since it is a reference to `const`, what essentially happens is:
+
+```C++
+const int temp = dval; // create a temporary const int from the double
+const int &ri = temp; // bind ri to that temporary
+```
+
+The compiler creates a *temporary* object with the correct type, then binds the reference to const to that temporary object.
+
+#### A Reference to `const` May Refer to an Object That is Not `const`
+A reference to `const` restricts only what we can do through that reference, not whether the underlying object is `const`.
+
+```C++
+int i = 42; 
+int &r1 = i; // r1 bound to i
+const int &r2 = i; // r2 also bound to i... but can't be used to change i 
+r1 = 0; // r1 is not const; i is now 0 
+r2 = 0; // error: r2 is a reference to const
+```
+
+#### Pointers and `const`
+Like with references, we can define pointers that point to either `const` or non`const` objects.
+This affects the operations we can perform through the pointer; a pointer to `const` can't change the object to which the pointer points.
+We may store addresses of `const` objects only in pointers to `const`.
+
+```C++
+const double pi = 3.14; // pi is const; its value may not be changed.
+double *ptr = &pi; // error: ptr is a plain pointer
+const double *ptr = &pi; // ok: cptr may point to a const double
+*cptr = 42; // error: cannot assign to *cptr
+```
+
+As with references, we can use a pointer to `const` to point to a non`const` object:
+```C++
+double dval = 3.14;
+cptr = &dval; // ok, but can't change dval through cptr.
+```
+
+#### `const` Pointers
+Pointers are objects, so they themselves can be `const`. A `const` pointer must be initialized.
+
+```C++
+int errNumb = 0;
+int *const curErr = &errNumb; // curErr will always point to errNumb
+const double pi = 3.14159;
+const double *const pip = &pi; // pip is a const pointer to a const object.
+```
+
+Easiest to read right to left... for example, pip is a const object. The asterisk says it's a pointer, so it's a const pointer. It points to a double, which specifically is a double that is const.
+
+`pip` is a const pointer to a const double, so its address can't be changed, and it can't be used to change the object to which it points.
+On the other hand, `curErr` is a const pointer, so its address can't be changed, but it can change the object to which it points.
+
+```C++
+*pip = 2.72; // error: pip is a pointer to const
+if (*curErr) {
+	errorHandler();
+	*curErr = 0; // ok; reset the value of the object to which curErr is bound.
+}
+```
+
+### 2.4.3 Top-Level `const`
+Top-level `const` means an object itself (like a pointer) is `const`, while low-level `const` means the base type to which a reference or pointer refers to or points to is const.
+
+```C++
+int i = 0;
+int *const p1 = &i; // we can't change the value of p1; const is top-level
+const int ci = 42; // we can't change ci; const is top-level
+const int *p2 = &ci; // we can change p2; const is low-level
+const int *const p3 = p2; // right-most const is top-level, left-most is low-level
+const int &r = ci; // const in reference types always low level
+```
+
+When we copy an object, top-level `const`s are ignored.
+```C++
+i = ci; // ok: copying the value of ci; top-level const in ci is ignored.
+p2 = p3; // ok: pointed-to type matches; top-level const in p3 is ignored.
+```
+
+However, low-level `const`s are never ignored.
+```C++
+int *p = p3; // error: p3 has low-level const but p doesn't
+p2 = p3; // ok: p2 has same low-level const qualification as p3
+p2 = &i; // ok: we can convert int* to const int*
+int &r = ci; // error;: can't bind an ordinary int& to a const int object
+const int &r2 = i; // ok: can bind const int& to plain int.
+```
+
+### 2.4.4 `constexpr` and Constant Expressions
+> A `constant expression` is an expression whose value cannot change and that can be evaluated at compile time.
+
+A literal is a constant expression, as is a const object initialized from a constant expression.
+
+```C++
+const int max_files = 20; // max_files is a constant expression
+const int limit = max_files + 1; // limit is a constant expression
+int staff_size = 27; // staff_size is not a constant expression... not const
+const int sz = get_size(); // sz not a constant expression, initializer not known until run time.
+```
+
+#### `constexpr` Variables
+We can ask the compiler to verify that a variable is a constant expression using `constexpr`.
+These variables are implicity `const`, must be initialized with constant expressions.
+
+```C++
+constexpr int mf = 20; // 20 is a constant expression
+constexpr int limit = mf + 1; // mf + 1 is a constant expression
+constexpr int sz = size(); // ok only if size is a constexpr function.
+```
+
+We'll see later on how to define certain functions as `constexpr`.
+
+#### Literal Types
+We can only use certain types for `constexpr` declarations, known as "literal types" like the arithmetic types, reference types and pointer types.
+For example, a `Sales_item` type can't be used because it's not a literal type.
+
+#### Pointers and `constexpr`
+When defining a pointer in a `constexpr` declaration, the `constexpr` imposes a top-level `const`
+
+```C++
+const int *p = nullptr; // p is a pointer to a const int
+constexpr int *q = nullptr; // q is a const pointer to int.
+```
+
+```C++
+constexpr int *np = nullptr; // np is a constaint pointer to int that is null
+int j = 0;
+constexpr int i = 42; // type of i is const int
+// i and j must be defined outside any function
+constexpr const int *p = &i; // p is a constant pointer to the const int i
+constexpr int *p1 = &j // p1 is a constant pointer to the int j
+```
+
+## 2.5 Dealing with Types
+### 2.5.1 Type Aliases
+A *Type alias* is a name that is a synonym for another type.
+We can define a type alias using `typedef`
+
+```C++
+typedef double wages; // wages is a synonym for double
+typedef double base, *p; // base is a synonym for double, p for double*
+```
+
+Alternately, we can use an *alias declaration* with the `using` keyword:
+```C++
+using SI = Sales_item; // SI is a synonym for Sales_item
+```
+
+```C++
+wages hourly, weekly; // same as double hourly, weekly;
+SI item; // same as Sales_item item
+```
+#### Pointers, `const` and Type Aliases
+A small detail to be aware of... be careful with type aliases for compound types.
+
+```C++
+typedef char *pstring; // pstring is an alias for char*
+const pstring cstr = 0; // cstr is a constant pointer to char
+const pstring *ps; // ps is a pointer to a constant pointer to char.
+
+const char *cstr = 0; // not analogous to cstr above... this is a pointer to a const char, not a const pointer to char.
+```
+
+### 2.5.2 The `auto` Type Specifier.
+If you don't know what type a variable will have we can use the `auto` type specifier.
+The compiler deduces the type from the initializer... so an initializer is required.
+
+```C++
+auto item = val1 + val2; // item initialized from results of val1 + val2
+
+auto i = 0, *p = &i; // ok: i is int, p is pointer to int.
+auto sz = 0, pi = 3.14; // error: inconsistent types for sz and pi
+```
+Multiple variables can be defined, but they must have the same base type.
+
+#### Compound Types, `const` and `auto`
+When using references, we are really using the object to which the reference refers:
+```C++
+int i = 0, &r = i;
+auto a = r; // a is an int (r is an alias for i which has type int)
+```
+
+`auto` usually ignores top-level `const`s...
+```C++
+const int ci = i, &cr = ci;
+auto b = ci; // b is an int (top-level const in ci is dropped)
+auto c = cr; // c is an int (cr is an alias for ci whose const is top-level)
+auto d = &i; // d is an int*
+auto e = &ci; // e is const int*
+
+const auto f = ci; // deduced type of ci is int; f has type const int
+
+auto &g = ci; // g is a const int & that is bound to ci;
+auto &h = 42; // error; can't bind plain reference to literal
+const auto &j = 42; // ok: we can bind a const reference to a literal
+
+auto k = ci, &l = i; // k is int, l is int& 
+auto &m = ci, *p = &ci; // m is a const int&; p is a pointer to const int
+// error: type deduced from i is int; type deduced from &ci is const int.
+auto &n = i, *p2 = &ci;
+```
+
+### 2.5.3 The `decltype` Type Specifier
+We can use `decltype` to have the compiler deduce the desired type of a variable from an expression:
+
+```C++
+decltype(f()) sum = x; // sum has whatever type f returns
+```
+
+`decltype` handles top-level `const` different from auto... when we apply `decltype` to a variable, `decltype` returns the type of that variable, including top-level `const` and references.
+```C++
+const int ci = 0, &cj = ci;
+decltype(ci) x = 0; // x has type const int
+decltype(cj) y = x; // y has type const int& and is bound to x
+decltype(cj) z; // error: z is a reference and must be initialized.
+```
+
+#### `decltype` and References
+> `decltype` is the *only* context where a variable defined as a reference is not treated as a synonym for the object to which it refers.
+
+A bit confusing, but some expressions will cause `decltype` to yield a reference type.
+
+```C++
+//decltype of an expression can be a reference type
+int i = 42, *p = &i, &r = i;
+decltype(r + 0) b; // ok: addition yields an int
+decltype(*p) c; // error: c is int& and must be initialized.
+```
+
+Also, we can force decltype to return a reference by putting some extra parentheses around the expression:
+
+```C++
+// decltype of a parenthesized variable is always a reference
+decltype((i)) d; // error: d is int& and must be initialized.
+decltype(i) e; // ok: e is an uninitialized int.
+```
+
+## 2.6 Defining our Own Data Structures
+C++ allows us to define data structures in the form of classes. These are a group of data elements, and operations that we might perform on these data.
+
+For example, the `string`, `istream`, `ostream`, and `Sales_item` types we've seen are all defined as classes.
+We can't define `Sales_item` yet, but we'll write a simpler version called `Sales_data`.
+
+### 2.6.1 Defining the `Sales_data` Type
+We use the keyword `struct` to define a class.
+The class body in curly braces defines a new scope.
+```C++
+struct Sales_data {
+	std::string bookNo;
+	unsigned units_sold = 0;
+	double revenue = 0.0;
+}; // <---- note the semicolon here!
+```
+
+The semicolon exists because you could write
+```C++
+struct Sales_data{ /* ... */ } accum, trans, *salesptr;
+// equivalent, but better way to define these objects:
+struct Sales_data{ /* ... */ };
+Sales_data accum, trans, *salesptr;
+```
+
+#### Class Data Members
+The class body defines *members* of the class.
+Here, we only have *data members*.
+Each object of a class has its own copy of the class data members.
+These data members are defined how we would define normal variables.
+We can use *in-class initializers* to initialize the data members.
+
+### 2.6.2 Using the `Sales_data` Class
+Unlike the `Sales_item` class, the `Sales_data` class includes no operations, so we'll have to write our own.
+
+#### Adding Two `Sales_data` Objects
+```C++
+#include <iostream>
+#include <string>
+#include "Sales_data.h"
+int main() {
+	Sales_data data1, data2;
+	// code to read into data1 and data2
+	// code to check if data1 and data2 have the same ISBN
+	// 		and if so print the sum of data1 and data2
+}
+```
+
+#### Reading Data into a `Sales_data` Object
+```C++
+double price = 0; // price per book
+std::cin >> data1.bookNo >> data1.units_sold >> price;
+data1.revenue = data1.units_sold*price;
+
+std::cin >> data2.bookNo >> data2.units_sold >> price;
+data2.revenue = data2.units_sold*price;
+```
+
+#### Printing the Sum of Two `Sales_data` Objects
+We're going to check if two `Sales_data` objects refer to the same book, then print their sum of they do:
+
+```C++
+if (data1.bookNo == data2.bookNo) {
+	unsigned totalCnt = data1.units_sold + data2.units_sold;
+	double totalRevenue = data1.revenue + data2.revenue;
+
+	std::cout << data1.bookNo << " " << totalCnt << 
+		" " << totalRevenue << " ";
+
+	if (totalCnt != 0) {
+		std::cout << totalRevenue/totalCnt << std::endl;
+	}
+	else {
+		std::cout << "(no sales)" << std::endl;
+	}
+	return 0;
+}
+else {
+	std::cerr << "Data must refer to the same ISBN"
+		<< std::endl;
+	return -1;
+}
+```
+
+### 2.6.3 Writing Our Own Header Files
+We can write the `Sales_data` class in a header file, and "include" it in our program.
+A header might be included multiple times... to make this safe, we rely on a *preprocessor*.
+
+#### A Brief Introduction to the Preprocessor
+C++ inherits the preprocessor from C.
+The preprocessor runs before the compiler and changes the source text.
+We've already seen this with the `#include` directive.
+
+We can define *header guards* using preprocessor variables, and the directives `#define`, `#ifndef`, and `#endif` to guard against multiple inclusion:
+
+```C++
+#ifndef SALES_DATA_H
+#define SALES_DATA_H
+
+#include <string>
+struct Sales_data {
+	std::string bookNo;
+	unsigned units_sold = 0;
+	double revenue = 0.0;
+};
+
+#endif
+```

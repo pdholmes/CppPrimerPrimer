@@ -97,3 +97,106 @@ A `void*` pointer can point to any object, while a `long*` pointer can only poin
 (a) ip is a pointer to int, i is an int, r is a reference to i.
 (b) i is an int, ip is a null pointer to int.
 (c) ip is a pointer to int, ip2 is an int.
+
+### Exercise 2.26
+(a) Not legal, must specify an initializer
+(b) legal
+(c) legal
+(d) illegal. sz is const, and can't be incremented.
+
+### Exercise 2.27
+(a) not legal... non const reference can't be initialized with 0
+(b) valid
+(c) ok, const reference can be initialized with 0
+(d) ok
+(e) ok
+(f) not legal, can't specify a const reference
+(g) ok
+
+### Exercise 2.28
+(a) invalid, cp is a constant pointer to an int, so it must be initialized.
+(b) invalid, p1 is a valid pointer, but p2 is a const pointer, so it must be initialized.
+(c) invalid, r is a reference to const bound to ic, but ic is a const int that must be initialized.
+(d) invalid, p3 is a const pointer to a const int, so it must be initialized
+(e) ok, p is a pointer to a const int.
+
+### Exercise 2.29
+(a) legal
+(b) illegal, p3 is a pointer to const, so p1 must be a pointer to const
+(c) illegal ic is a const int, so p1 must be a pointer to const
+(d) illegal... p3 is a const pointer that must be initialized, can't change the address it holds
+(e) illegal... p2 is a const pointer, so the address it holds can't be changed.
+(f) illegal, ic is a const int, can't reassign.
+
+### Exercise 2.30
+v2 is top-level const... the object itself is const. v1 is not const.
+p1 and r1 are not const.
+p2 is low-level const, p3 is top and low-level const, and r2 is low-level const
+
+### Exercise 2.31
+`r1 = v2` not legal, r1 must be a reference to `const`.
+`p1 = p2` not legal, p1 must be a pointer to `const`. `p2 = p1` is legal though.
+`p1 = p3` not legal, p1 must be a pointer to `const`. `p2 = p3` is legal, since they are both low-level const.
+
+### Exercise 2.32
+Not legal, use a nullptr to initialize p
+
+### Exercise 2.33
+(a) a is an int with value 42.
+(b) b is an int with value 42.
+(c) c is an int with value 42.
+(d) d is a pointer to an int with address of 42
+(e) e is a pointer to a const int... illegal expresion
+(g) g is a reference to a const int, can't assign
+
+### Exercise 2.34
+Check out this answer: https://github.com/adobrich/CppPrimer/blob/master/Chapter_02/exercise_34.cpp
+
+### Exercise 2.35
+j is an int with value 42. k is a reference to const bound to i. p is a pointer to int bound to i.
+j2 is a const int with value 42. k2 is a reference to const int bound to i.
+
+### Exercise 2.36
+c is an int with value 3.
+d is an int& bound to a.
+`++c` increments c, so it has value 4.
+`++d` increments a, so it has value 4.
+
+### Exercise 2.37
+c is an int with value 3.
+d is an int& bound to a.
+
+### Exercise 2.38
+The main differences between `decltype` and `auto` are how they handle top-level `const` and how they handle references.
+
+`auto` usually ignores top-level `const`, while `decltype` does not.
+
+For example:
+
+```C++
+const int i = 0;
+auto j = i; // j is an int.
+decltype(i) k = i; // k is a const int
+```
+
+`decltype` will deduce a reference type if given a reference variable, while `auto` will use the type of the object to which the reference refers.
+
+```C++
+int i = 0, &r = i;
+auto j = r; // j is an int.
+decltype(r) k = r; // k is an int& 
+```
+
+### Exercise 2.39
+Got this error: 
+exercise_39.cpp:5:20: error: expected ';' after struct
+struct Foo { } // Note: no semicolon!
+
+### Exercise 2.40
+```C++
+struct Sales_data {
+    std::string bookNo;
+    unsigned units_sold = 0;
+    double revenue = 0.0;
+};
+```
